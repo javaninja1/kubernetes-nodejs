@@ -1,0 +1,15 @@
+{
+  "name": "kubernetes-nodejs",
+  "version": "1.0.0",
+  "description": "Deploying a node-js application to kubernetes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

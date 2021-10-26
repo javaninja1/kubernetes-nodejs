@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-express
+  namespace: demo-namespace
+  labels:
+    app: express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-express
+  template:
+    metadata:
+      labels:
+        app: node-express
+    spec:
+      containers:
+      - name: node-express
+        image: AWS_ACCT_NUM.dkr.ecr.AWS_REGION.amazonaws.com/node-express:1.0
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 100m
+          limits:
+            memory: 128Mi
+            cpu: 300m

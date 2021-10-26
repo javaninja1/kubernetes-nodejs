@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:AWS_REGION:AWS_ACCT_NUM:certificate/ACM_SSL_CERT_ID
+    alb.ingress.kubernetes.io/group.name: DEMO-EKS
+    alb.ingress.kubernetes.io/healthcheck-path: /hello-k8s
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/success-codes: 200,302
+    alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: alb
+  labels:
+    app: node-express
+  name: node-express
+  namespace: demo-namespace
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: node-express-service
+          servicePort: 80
+        path: /hello-k8s
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: node-express-service
+          servicePort: 80
+        path: /hello-k8s/*
+        pathType: ImplementationSpecific
