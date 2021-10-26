@@ -19,12 +19,12 @@ spec:
   - http:
       paths:
       - backend:
-          serviceName: node-express-service
+          serviceName: node-express
           servicePort: 80
         path: /hello-k8s
         pathType: ImplementationSpecific
       - backend:
-          serviceName: node-express-service
+          serviceName: node-express
           servicePort: 80
         path: /hello-k8s/*
         pathType: ImplementationSpecific

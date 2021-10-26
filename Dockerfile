@@ -12,8 +12,7 @@ COPY package*.json ./
 
 # If you are building your code for production
 RUN npm ci --only=production
-# Unlike npm install, npm ci will never modify your p
-# package-lock.json
+# Unlike npm install, npm ci will never modify your package-lock.json
 # It does however expect a package-lock. json file in your project
 # npm ci: CI stands for continuous integration and npm ci is used to install all exact version dependencies
 
